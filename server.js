@@ -36,10 +36,10 @@ app.get("/words", (req, res) => {
 
 app.post("/rank", (req, res) => {
   const { score } = req.body;
-  const { scoresList } = testData; // Use scoresList instead of scoreList
+  const { scoresList } = testData;
   const rank =
     ((scoresList.length - scoresList.filter((s) => s >= score).length) /
-      scoresList.length) * // Use scoresList instead of scoreList
+      scoresList.length) *
     100;
   res.json({ rank: rank.toFixed(2) });
 });
