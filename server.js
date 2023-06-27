@@ -7,7 +7,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 app.use(express.static("public"));
-
+// wordlist end points//
 app.get("/words", (req, res) => {
   const wordsList = testData.wordList;
   const words = [];
@@ -33,7 +33,7 @@ app.get("/words", (req, res) => {
 
   res.json(words);
 });
-
+//rank end points//
 app.post("/rank", (req, res) => {
   const { score } = req.body;
   const { scoresList } = testData;
