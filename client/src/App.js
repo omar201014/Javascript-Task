@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
+
 function PracticeScreen({ words, onAnswer }) {
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [selectedOption, setSelectedOption] = useState(null);

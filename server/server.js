@@ -1,12 +1,26 @@
 const express = require("express");
 const cors = require("cors");
 const testData = require("./TestData.json");
-
+const path = require('path');
+const bodyParser = require("body-parser");
 const app = express();
 
-app.use(express.json());
 app.use(cors());
-app.use(express.static("public"));
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+// Serve static files from the client/public directory
+app.use(express.static(path.join(__dirname, 'client', 'public')));
+
+// Serve static files from the client/src directory
+app.use(express.static(path.join(__dirname, 'client', 'src')));
+
+// Serve the index.html file when the root URL is requested
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'client', 'public', 'index.html'));
+});
+
+
 // wordlist end points//
 app.get("/words", (req, res) => {
   const wordsList = testData.wordList;
